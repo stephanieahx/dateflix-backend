@@ -9,7 +9,7 @@ const validator = Ajv.compile(profileSchema);
 const ValidationError = require('../exceptions/ValidatorError');
 
 module.exports = {
-        validate(profile) {
+        validateProfile(profile) {
             const isValid = validator(profile);
             if(!isValid){
                 console.log(`Validation Error: ${JSON.stringify(validator.errors)}`);

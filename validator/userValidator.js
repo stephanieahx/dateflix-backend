@@ -9,14 +9,14 @@ const validator = Ajv.compile(userSchema);
 const ValidationError = require('../exceptions/ValidatorError');
 
 module.exports = {
-        validate(data) {
-            const isValid = validator(data);
+        validateUser(user) {
+            const isValid = validator(user);
             if(!isValid){
                 console.log(`Validation Error: ${JSON.stringify(validator.errors)}`);
                 throw new ValidationError(validator.errors);
             }
             // Add default values for createdAt
-            data.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
+            user.createdAt = user.createdAt ? new Date(user.createdAt) : new Date();
             return isValid;
         }
 };

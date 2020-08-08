@@ -14,4 +14,4 @@ mongoose.connect('mongodb://localhost:27017/Dateflix',
         }
     });
 
-const users = require('./user.model');
+// const users = require('./user.model');

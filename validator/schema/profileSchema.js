@@ -7,7 +7,7 @@ module.exports = {
         },
         age: {
             type: 'number',
-            min: 18
+            minimum: 18
         },
         updatedAt: {
             type: 'string', 

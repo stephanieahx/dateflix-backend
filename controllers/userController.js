@@ -1,6 +1,6 @@
 const userRepository = require('../repositories/userRepository');
-// const userSchema = require('../models/userSchema');
-const { validate } = require('../validator/userValidator'); 
+const { validateUser } = require('../validator/userValidator'); 
+const { validateProfile } = require('../validator/profileValidator'); 
 const sessionController = require('./sessionController');
 const { find } = require('../repositories/userRepository');
 
@@ -9,7 +9,7 @@ module.exports = {
     async create(req, res) {
         try {
             // userSchema(req.body);
-            validate(req.body);
+            validateUser(req.body);
             await userRepository.create(req.body);
             res.json('User registered successfully.');
         } catch (err) {
@@ -32,7 +32,7 @@ module.exports = {
     async update(req, res) {
         try {
             const { result } = await userRepository.update(req.params.id, req.body);
-            validate(req.body);
+            validateProfile(req.body);
             // console.log(message.documents[0]);
             res.json({
                 result
