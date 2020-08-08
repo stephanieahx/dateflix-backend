@@ -14,21 +14,22 @@ module.exports = {
     async getOneById(id) {
         const result = await db.movies.findOne(
             {
-                id: id
+                "_id": ObjectId(id)
             }
         );
         return result;
     },
 
-    // Find movie by title 
+    // Find movie by title * NOT WORKING *
     async findOneByTitle(title) {
         const result = await db.movies.findOne(
             {
-                title: title
+                title: "title"
             }
         );
         if (!result)
             throw new Error(`No movies found with title: ${title}`);
         return result;
     },
+
 }

@@ -32,9 +32,20 @@ module.exports = {
         return db.users.find().toArray();
     },
 
-    // Update user profile
+    // Update user profile - bio details
     update(id, body) {
+        return db.users.updateOne(
+            {
+                "_id": ObjectId(id)
+            },
+            {
+                $set: body
+            }
+        );
+    },
 
+    // Update user profile - add movie to favourites
+    addFavMovie(id, body) {
         return db.users.updateOne(
             {
                 "_id": ObjectId(id)
@@ -48,7 +59,10 @@ module.exports = {
     // Delete user profile
     delete(id) {
         return db.users.deleteOne(
-            { "_id": ObjectId(id) });
+            {
+                "_id": ObjectId(id)
+            }
+        );
     },
 
 };

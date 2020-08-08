@@ -12,13 +12,13 @@ module.exports = {
 
     // View information of selected movie
     async viewOneSelected(req, res) {
-        const movie = await movieRepository.getOneById();
+        const movie = await movieRepository.getOneById(req.params.id);
         res.json(movie);
     },
     
-    // Find movie by title
+    // Find movie by title * NOT WORKING *
     async viewOneByTitle(req, res) {
-        const movie = await movieRepository.findOneByTitle();
+        const movie = await movieRepository.findOneByTitle(req.params.body);
         res.json(movie);
     },
 

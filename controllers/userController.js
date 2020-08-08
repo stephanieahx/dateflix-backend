@@ -28,13 +28,30 @@ module.exports = {
         res.json(users)
     },
 
-    // Update user profile
+    // Update user profile - bio details
     async update(req, res) {
         try {
             const result = await userRepository.update(req.params.id, req.body);
             // const { result } = await userRepository.update(req.params.id, req.body);
             validateProfile(req.body);
             console.log(result)
+            res.json({
+                result
+            });
+
+        } catch (err) {
+            console.log('error', err);
+            res.json({
+                "Error": err.message,
+            })
+        }
+    },
+
+    // Update user profile - add movie to favourites
+    async addFavMovie(req, res) {
+        try {
+            const result = await userRepository.addFavMovie(req.params.id, req.body);
+            // const { result } = await userRepository.update(req.params.id, req.body);
             res.json({
                 result
             });
