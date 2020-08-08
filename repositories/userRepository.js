@@ -4,7 +4,7 @@ const SALT_ROUND = process.env.SALT_ROUND || 10; //storing as environment variab
 const { ObjectId } = require('mongodb');
 
 module.exports = {
-    // Register a new user
+    // Register a new user 
     async create(data) {
         try {
             data.password = bcrypt.hashSync(data.password, bcrypt.genSaltSync(SALT_ROUND));
