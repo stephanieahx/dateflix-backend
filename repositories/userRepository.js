@@ -18,7 +18,11 @@ module.exports = {
 
     // find matching user with username for sessions login
     async find(username) {
-        const result = await db.users.findOne({ username: username });
+        const result = await db.users.findOne(
+            {
+                username: username
+            }
+        );
         if (!result) throw new Error(`No account registered to ${username}`);
         return result;
     },

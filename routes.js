@@ -3,6 +3,8 @@ const movieController = require('./controllers/movieController');
 const sessionController = require('./controllers/sessionController')
 
 module.exports = app => {
+
+    // SESSIONS
     // app.get('/', (req, res) => {
     //     res.render(
     //         'index',
@@ -21,8 +23,8 @@ module.exports = app => {
     // app.get('/sessions/new', sessionController.newForm);
     app.delete('/sessions', sessionController.destroy);
 
-    // app.get('/register', userController.getForm); 
 
+    // USERS
     // Register a new user
     app.post('/register', userController.create);
 
@@ -35,8 +37,18 @@ module.exports = app => {
     // Delete user profile
     app.delete('/users/:id', userController.delete);
 
-    // app.get('/feedback', feedbackController.getAll);
-    // app.post('/feedback', feedbackController.create);
+
+    // MOVIES
+    
+    // View information of selected movie
+    app.get('/movies/:id', movieController.viewOneSelected);
+    
+    // View information of selected movie
+    app.get('/movies/:title', movieController.viewOneByTitle);
+    
+    // View all movies as posters
+    app.get('/movies', movieController.getAll);
+
     // app.get('/feedback/submit', feedbackController.getForm);
     // app.get('/feedback/latest', feedbackController.refresh);
     // app.get('/feedback/:index', feedbackController.show);
