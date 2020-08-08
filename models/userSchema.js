@@ -8,6 +8,7 @@ var userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
+        required: true,
         minLength: 5
     },
     age: Number,

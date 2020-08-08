@@ -15,16 +15,19 @@ module.exports = {
             throw new Error(`Due to ${err.message}, you are not allowed to insert this item ${JSON.stringify}`)
         }
     },
+
     async find(name) {
         const result = await db.users.findOne({ name: name });
         if (!result) throw new Error(`No account registered to ${name}`);
         return result;
     },
 
+    // View all users
     getAll() {
         return db.users.find().toArray();
     },
 
+    // Update user profile
     update(id, body) {
 
         return db.users.update(
@@ -37,6 +40,7 @@ module.exports = {
         );
     },
 
+    // Delete user profile
     delete(id) {
         return db.users.deleteOne(
             { "_id": ObjectId(id) });

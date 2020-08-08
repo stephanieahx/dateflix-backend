@@ -13,17 +13,22 @@ module.exports = app => {
     //         res.redirect('/')
     //     }
     // });
-    // app.get('/sessions/new', sessionController.newForm);
-    // app.post('/sessions', sessionController.create);
-    // app.delete('/sessions', sessionController.destroy);
+
+    app.get('/sessions/new', sessionController.newForm);
+    app.post('/sessions', sessionController.create);
+    app.delete('/sessions', sessionController.destroy);
 
     // app.get('/register', userController.getForm); //app.get('/users/register', userController.getForm)
-    // app.post('/register', userController.create);
-
+    
+    // Register a new user
+    app.post('/register', userController.create);
+    // View all users
     app.get('/users', userController.getAll);
+    // Update user profile
     app.put('/users/:id', userController.update);
+    // Delete user profile
     app.delete('/users/:id', userController.delete);
-
+    
     // app.get('/feedback', feedbackController.getAll);
     // app.post('/feedback', feedbackController.create);
     // app.get('/feedback/submit', feedbackController.getForm);
