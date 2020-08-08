@@ -16,8 +16,9 @@ module.exports = {
         }
     },
 
-    async find(name) {
-        const result = await db.users.findOne({ name: name });
+    // (work in progress) function not working yet
+    async find(id) {
+        const result = await db.users.findOne({ _id: id });
         if (!result) throw new Error(`No account registered to ${name}`);
         return result;
     },
@@ -30,7 +31,7 @@ module.exports = {
     // Update user profile
     update(id, body) {
 
-        return db.users.update(
+        return db.users.updateOne(
             {
                 "_id": ObjectId(id)
             },

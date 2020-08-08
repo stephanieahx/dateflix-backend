@@ -1,15 +1,20 @@
 const userRepository = require('../repositories/userRepository');
+// const userSchema = require('../models/userSchema');
+const { validate } = require('../validator/userValidator'); 
 const sessionController = require('./sessionController');
+const { find } = require('../repositories/userRepository');
 
 module.exports = {
-   // Register a new user
+    // Register a new user
     async create(req, res) {
         try {
-            // validate(req.body);
+            // userSchema(req.body);
+            validate(req.body);
             await userRepository.create(req.body);
             res.json('User registered successfully.');
         } catch (err) {
-            res.render('errors/404', { err });
+            // res.json('errors/404', { err });
+            res.json({ err });
         }
     },
 
@@ -19,21 +24,24 @@ module.exports = {
 
     // View all users
     async getAll(req, res) {
-        const users = await userRepository.get();
-        res.json("Viewing all users.")
+        const users = await userRepository.getAll();
+        res.json(users)
     },
 
     // Update user profile
     async update(req, res) {
         try {
-            const { result } = await userRepository.update(req.params.id, req.body); // assigns the value of a key to a variable
-            // console.log(id.message.documents[0]);
-            res.json({ result });
+            const { result } = await userRepository.update(req.params.id, req.body);
+            validate(req.body);
+            // console.log(message.documents[0]);
+            res.json({
+                result
+            });
 
         } catch (err) {
             console.log('error', err);
             res.json({
-                "message": err.message,
+                "Error": err.message,
             })
         }
     },
