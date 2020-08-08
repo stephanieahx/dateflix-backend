@@ -6,10 +6,14 @@ const COLLECTIONS = {
     MOVIES: 'movies',
 }
 
-const client = new MongoClient(MONGO_URL, { useUnifiedTopology: true });
+const client = new MongoClient(MONGO_URL,
+    {
+        useUnifiedTopology: true
+    }
+);
 
 module.exports = {
-    async connect () {
+    async connect() {
         const connection = await client.connect();
         console.log('Connected to MongoDB.');
         const db = connection.db(DB_NAME);

@@ -51,7 +51,10 @@ module.exports = {
                 "_id": ObjectId(id)
             },
             {
-                $set: body
+                $addToSet:
+                {
+                    favMovies: body
+                }
             }
         );
     },

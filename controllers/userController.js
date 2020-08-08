@@ -51,7 +51,6 @@ module.exports = {
     async addFavMovie(req, res) {
         try {
             const result = await userRepository.addFavMovie(req.params.id, req.body);
-            // const { result } = await userRepository.update(req.params.id, req.body);
             res.json({
                 result
             });
