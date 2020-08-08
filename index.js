@@ -35,9 +35,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // Routes
-const movieController = require('./controllers/movieController.js');
+// const movieController = require('./controllers/movieController.js');
 // app.get('/movies', movieController);
-
 require('./routes')(app);
 
 app.listen(PORT, () => {

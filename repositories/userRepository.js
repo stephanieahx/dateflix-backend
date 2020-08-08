@@ -16,10 +16,10 @@ module.exports = {
         }
     },
 
-    // (work in progress) function not working yet
-    async find(id) {
-        const result = await db.users.findOne({ _id: id });
-        if (!result) throw new Error(`No account registered to ${name}`);
+    // find matching user with username for sessions login
+    async find(username) {
+        const result = await db.users.findOne({ username: username });
+        if (!result) throw new Error(`No account registered to ${username}`);
         return result;
     },
 

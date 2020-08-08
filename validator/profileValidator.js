@@ -15,7 +15,7 @@ module.exports = {
                 console.log(`Validation Error: ${JSON.stringify(validator.errors)}`);
                 throw new ValidationError(validator.errors);
             }
-            // Add default values for updatedAt
+            // Add value for Updated At date
             profile.updatedAt = profile.updatedAt ? new Date(profile.updatedAt) : new Date();
             return isValid;
         }

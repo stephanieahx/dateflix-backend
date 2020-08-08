@@ -15,7 +15,7 @@ module.exports = {
                 console.log(`Validation Error: ${JSON.stringify(validator.errors)}`);
                 throw new ValidationError(validator.errors);
             }
-            // Add default values for createdAt
+            // Add value for Created At date
             user.createdAt = user.createdAt ? new Date(user.createdAt) : new Date();
             return isValid;
         }

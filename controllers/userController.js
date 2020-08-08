@@ -31,9 +31,10 @@ module.exports = {
     // Update user profile
     async update(req, res) {
         try {
-            const { result } = await userRepository.update(req.params.id, req.body);
+            const result = await userRepository.update(req.params.id, req.body);
+            // const { result } = await userRepository.update(req.params.id, req.body);
             validateProfile(req.body);
-            // console.log(message.documents[0]);
+            console.log(result)
             res.json({
                 result
             });
