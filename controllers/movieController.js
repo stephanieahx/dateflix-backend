@@ -18,7 +18,7 @@ module.exports = {
     
     // Find movie by title * NOT WORKING *
     async viewOneByTitle(req, res) {
-        const movie = await movieRepository.findOneByTitle(req.params.body);
+        const movie = await movieRepository.findOneByTitle(req.params.body.title);
         res.json(movie);
     },
 

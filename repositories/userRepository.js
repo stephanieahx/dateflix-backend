@@ -16,7 +16,7 @@ module.exports = {
         }
     },
 
-    // find matching user with username for sessions login
+    // find user with matching username for sessions login
     async find(username) {
         const result = await db.users.findOne(
             {

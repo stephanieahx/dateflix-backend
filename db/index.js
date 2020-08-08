@@ -1,6 +1,9 @@
 const MongoClient = require('mongodb').MongoClient;
-const MONGO_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-const DB_NAME = 'Dateflix'
+const MONGO_URL =
+    process.env.MONGODB_URI
+// || 'mongodb://localhost:27017';
+const DB_NAME = 'dateflix'
+
 const COLLECTIONS = {
     USERS: 'users',
     MOVIES: 'movies',

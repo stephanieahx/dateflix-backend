@@ -1,10 +1,11 @@
 const db = require('../db');
 const { ObjectId } = require('mongodb');
-const fetch = require('node-fetch');
-const accessKey = process.env.ACCESS_KEY;
-const url = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + accessKey
+// const fetch = require('node-fetch');
+// const accessKey = process.env.ACCESS_KEY;
+// const url = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + accessKey
 
 module.exports = {
+
     // View all movies as posters
     getAll() {
         return db.movies.find().toArray();
@@ -32,4 +33,15 @@ module.exports = {
         return result;
     },
 
+
+    // // API FETCH - Find movie by title
+    // async findOneByTitle(title) {
+    //     const response = await fetch(
+    //         url + '?t=' + title,
+    //         {
+    //             method: "GET"
+    //         }
+    //     )
+    //     console.log(response.json());
+    // },
 }

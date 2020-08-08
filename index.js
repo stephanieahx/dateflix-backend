@@ -9,13 +9,17 @@ const app = express();
 const db = require('./db');
 
 // Environment Variables
-const mongoURI = 'mongodb://localhost:27017/Dateflix'; // process.env.MONGODB_CONNECTION_STRING ||
-const PORT = process.env.PORT || 3000;
+const mongoURI =
+    process.env.MONGODB_URI
+// || 'mongodb://localhost:27017/Dateflix';
+const PORT = process.env.PORT
+    || 3000;
 
 db.connect();
 
 // Connect to Mongo 
-mongoose.connect(mongoURI,
+mongoose.connect(
+    mongoURI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -34,9 +38,6 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-// Routes
-// const movieController = require('./controllers/movieController.js');
-// app.get('/movies', movieController);
 require('./routes')(app);
 
 app.listen(PORT, () => {

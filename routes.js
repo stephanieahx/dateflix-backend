@@ -51,10 +51,4 @@ module.exports = app => {
     // Find movie by title * NOT WORKING *
     app.post('/movies/search', movieController.viewOneByTitle);
     
-
-    // app.get('/feedback/submit', feedbackController.getForm);
-    // app.get('/feedback/latest', feedbackController.refresh);
-    // app.get('/feedback/:index', feedbackController.show);
-    // app.put('/feedback/:id', feedbackController.update);
-    // app.delete('/feedback/:id', feedbackController.delete);
 }
