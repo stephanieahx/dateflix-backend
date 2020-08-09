@@ -36,10 +36,7 @@ module.exports = {
             });
 
         } catch (err) {
-            console.log('error', err);
-            res.json({
-                "Error": err.message,
-            })
+            res.json({ err });
         }
     },
 
@@ -47,13 +44,12 @@ module.exports = {
     async addFavMovie(req, res) {
         try {
             const result = await userRepository.addFavMovie(req.params.id, req.body);
-            movieRepository.create(req.body); 
+            movieRepository.create(req.body);
             res.json({
                 result
             });
 
         } catch (err) {
-            console.log('error', err);
             res.json({
                 "Error": err.message,
             })

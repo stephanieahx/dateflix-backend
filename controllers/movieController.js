@@ -1,8 +1,7 @@
 const movieRepository = require('../repositories/movieRepository');
-// const sessionController = require('./sessionController')
 const db = require('../db');
-// const { getAll } = require('../repositories/movieRepository');
 
+// Stuff for TMDB API fetch
 const fetch = require('node-fetch');
 const accessKey = process.env.TMDB_ACCESS_KEY;
 const url = 'https://api.themoviedb.org/3/movie/popular?' + 'api_key=' + accessKey + '&language=en-US&page=1' 
@@ -15,7 +14,6 @@ module.exports = {
             await movieRepository.create(req.body);
             res.json('Movie added to datelix database successfully.');
         } catch (err) {
-            // res.json('errors/404', { err });
             res.json({ err });
         }
     },
@@ -38,17 +36,6 @@ module.exports = {
     async viewOneByTitle(req, res) {
         const movie = await movieRepository.findOneByTitle(req.params.body.title);
         res.json(movie);
-    },
-
-    // API FETCH - Find movie by query 
-    async fetchOMDBdata(req, res) {
-        console.log(req.params.title)
-        console.log("body below")
-        console.log(req.body)
-        const response = await fetch(url + '&t=' + req.body.title);
-        const result = await response.json();
-        res.json(result)
-
     },
 
 };
