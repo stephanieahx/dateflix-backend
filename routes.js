@@ -42,11 +42,8 @@ module.exports = app => {
 
 
     // MOVIES
-    // View all movies as posters
+    // Fetch list of popular movies from TMDB - FRONT END: view all movies as posters
     app.get('/movies', movieController.getAllTMDB);
-    
-    app.get('/api/fetch', movieController.fetchOMDBdata);
-    app.get('/api/fetch', movieController.fetchOMDBdata);
 
     // View information of selected movie
     app.get('/movies/:id', movieController.viewOneSelected);
