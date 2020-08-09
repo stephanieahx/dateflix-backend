@@ -10,19 +10,13 @@ module.exports = {
     // Register a new user
     async create(req, res) {
         try {
-            // userSchema(req.body);
             validateUser(req.body);
             await userRepository.create(req.body);
             res.json('User registered successfully.');
         } catch (err) {
-            // res.json('errors/404', { err });
             res.json({ err });
         }
     },
-
-    // getForm(req, res) {
-    //     res.render('users/registration'); //res.redirect('users/registration')
-    // },
 
     // View all users [FRONT END: explore button in nav bar]
     async getAll(req, res) {
