@@ -45,7 +45,7 @@ module.exports = {
     },
 
     // Update user profile - add movie to favourites
-    addFavMovie(id, body) {
+    addFavMovie(id, movie) {
         return db.users.updateOne(
             {
                 "_id": ObjectId(id)
@@ -53,7 +53,7 @@ module.exports = {
             {
                 $addToSet:
                 {
-                    favMovies: body
+                    favMovies: movie
                 }
             }
         );

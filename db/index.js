@@ -3,6 +3,7 @@ const MONGO_URL =
     process.env.MONGODB_URI
 // || 'mongodb://localhost:27017';
 const DB_NAME = 'dateflix'
+console.log(process.env.MONGODB_URI)
 
 const COLLECTIONS = {
     USERS: 'users',

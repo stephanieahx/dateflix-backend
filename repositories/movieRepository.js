@@ -1,8 +1,8 @@
 const db = require('../db');
 const { ObjectId } = require('mongodb');
-// const fetch = require('node-fetch');
-// const accessKey = process.env.ACCESS_KEY;
-// const url = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + accessKey
+const fetch = require('node-fetch');
+const accessKey = process.env.ACCESS_KEY;
+const url = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + accessKey
 
 module.exports = {
 
@@ -35,13 +35,10 @@ module.exports = {
 
 
     // // API FETCH - Find movie by title
-    // async findOneByTitle(title) {
-    //     const response = await fetch(
-    //         url + '?t=' + title,
-    //         {
-    //             method: "GET"
-    //         }
-    //     )
-    //     console.log(response.json());
-    // },
+    async fetchOMDBdata(title) {
+        const response = await fetch(url);
+        const result = await response.json();
+        console.log(result);
+    },
+
 }

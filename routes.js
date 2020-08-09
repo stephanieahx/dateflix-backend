@@ -44,6 +44,8 @@ module.exports = app => {
     // MOVIES
     // View all movies as posters
     app.get('/movies', movieController.getAll);
+    
+    app.get('/api/fetch', movieController.fetchOMDBdata);
 
     // View information of selected movie
     app.get('/movies/:id', movieController.viewOneSelected);
