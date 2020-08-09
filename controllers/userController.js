@@ -16,7 +16,7 @@ module.exports = {
             res.json('User registered successfully.');
         } catch (err) {
             // res.json('errors/404', { err });
-            res.json({ err });
+            // res.json({ err });
         }
     },
 
