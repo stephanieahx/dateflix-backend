@@ -6,7 +6,7 @@ const Ajv = new ajv({ // add ajv settings
 });
 const userSchema = require('./schema/userSchema'); //import schema
 const validator = Ajv.compile(userSchema);
-const ValidationError = require('../exceptions/ValidatorError');
+const ValidationError = require('../exceptions/validatorError.js');
 
 module.exports = {
         validateUser(user) {

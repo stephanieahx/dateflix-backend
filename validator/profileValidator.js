@@ -6,7 +6,7 @@ const Ajv = new ajv({ // add ajv settings
 });
 const profileSchema = require('./schema/profileSchema'); //import schema
 const validator = Ajv.compile(profileSchema);
-const ValidationError = require('../exceptions/ValidatorError');
+const ValidationError = require('../exceptions/validatorError');
 
 module.exports = {
         validateProfile(profile) {
