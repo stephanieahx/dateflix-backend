@@ -34,7 +34,7 @@ module.exports = app => {
     // Update user profile - bio details
     app.put('/users/:id', userController.update);
     
-    // Update user profile - add movie to favourites
+    // Add movie to favourites * TO ASK WILFRED *
     app.put('/users/movies/:id', userController.addFavMovie);
     
     // Delete user profile

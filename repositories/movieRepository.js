@@ -1,13 +1,22 @@
 const db = require('../db');
 const { ObjectId } = require('mongodb');
-const fetch = require('node-fetch');
-const accessKey = process.env.ACCESS_KEY;
-const url = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + accessKey
+
 
 module.exports = {
-
+    // Add movie to dateflix database
+    async create(data) {
+        try {
+            const { insertedCount } = await db.movies.insertOne(data);
+            if (!insertedCount) throw new Error('insertion failure');
+            return true;
+        } catch (err) {
+            throw new Error(`Due to ${err.message}, you are not allowed to insert this item ${JSON.stringify}`)
+        }
+    },
+    
     // View all movies as posters
     getAll() {
+        // get id and poster
         return db.movies.find().toArray();
     },
 
@@ -21,7 +30,7 @@ module.exports = {
         return result;
     },
 
-    // Find movie by title * NOT WORKING *
+    // Find movie by title * NOT WORKING. 9 Aug - TO BE FETCHED FROM FRONT END*
     async findOneByTitle(title) {
         const result = await db.movies.findOne(
             {
@@ -33,12 +42,5 @@ module.exports = {
         return result;
     },
 
-
-    // // API FETCH - Find movie by title
-    async fetchOMDBdata(title) {
-        const response = await fetch(url);
-        const result = await response.json();
-        console.log(result);
-    },
 
 }

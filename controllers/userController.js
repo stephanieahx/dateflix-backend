@@ -1,8 +1,10 @@
 const userRepository = require('../repositories/userRepository');
-const { validateUser } = require('../validator/userValidator'); 
-const { validateProfile } = require('../validator/profileValidator'); 
+const { validateUser } = require('../validator/userValidator');
+const { validateProfile } = require('../validator/profileValidator');
 const sessionController = require('./sessionController'); // don't know if this is required
 const { find } = require('../repositories/userRepository'); // don't know if this is required / don't know what it is for
+const movieRepository = require('../repositories/movieRepository');
+// const movieController = require('../controllers/movieController');
 
 module.exports = {
     // Register a new user
@@ -22,13 +24,13 @@ module.exports = {
     //     res.render('users/registration'); //res.redirect('users/registration')
     // },
 
-    // View all users
+    // View all users [FRONT END: explore button in nav bar]
     async getAll(req, res) {
         const users = await userRepository.getAll();
         res.json(users)
     },
 
-    // Update user profile - bio details
+    // Update user profile bio details *UPDATEDAT FIELD NOT WORKING* 
     async update(req, res) {
         try {
             const result = await userRepository.update(req.params.id, req.body);
@@ -47,10 +49,11 @@ module.exports = {
         }
     },
 
-    // Update user profile - add movie to favourites
+    // User adds movie to favourites & movie is added to Dateflix database
     async addFavMovie(req, res) {
         try {
             const result = await userRepository.addFavMovie(req.params.id, req.body);
+            movieRepository.create(req.body); 
             res.json({
                 result
             });

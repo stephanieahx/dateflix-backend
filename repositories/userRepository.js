@@ -27,12 +27,12 @@ module.exports = {
         return result;
     },
 
-    // View all users
+    // View all users [FRONT END: explore button in nav bar]
     getAll() {
         return db.users.find().toArray();
     },
 
-    // Update user profile - bio details
+    // Update user profile bio details *UPDATEDAT FIELD NOT WORKING* 
     update(id, body) {
         return db.users.updateOne(
             {
@@ -44,7 +44,8 @@ module.exports = {
         );
     },
 
-    // Update user profile - add movie to favourites
+    
+    // Add movie to favourites * TO ASK WILFRED *
     addFavMovie(id, movie) {
         return db.users.updateOne(
             {
