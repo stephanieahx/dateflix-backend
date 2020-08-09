@@ -8,6 +8,11 @@ require('dotenv').config()
 const app = express();
 const db = require('./db');
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 // Environment Variables
 const mongoURI =
     process.env.MONGODB_URI
