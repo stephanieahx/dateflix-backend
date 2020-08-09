@@ -4,9 +4,8 @@ const db = require('../db');
 // const { getAll } = require('../repositories/movieRepository');
 
 const fetch = require('node-fetch');
-const accessKey = process.env.ACCESS_KEY;
-const url = 'http://www.omdbapi.com/?apikey=' + accessKey
-
+const accessKey = process.env.TMDB_ACCESS_KEY;
+const url = 'https://api.themoviedb.org/3/movie/popular?' + 'api_key=' + accessKey + '&language=en-US&page=1' 
 
 module.exports = {
 
@@ -21,10 +20,12 @@ module.exports = {
         }
     },
 
-    // View all movies as posters (only movies that have been added to favourites by users)
-    async getAll(req, res) {
-        const movies = await movieRepository.getAll();
-        res.json(movies);
+    // View all popular movies from TMDB
+    async getAllTMDB(req, res) {
+        const response = await fetch(url);
+        const result = await response.json();
+        const movieListTMDB = result.results; 
+        res.json(movieListTMDB);
     },
 
     // View information of selected movie
@@ -41,9 +42,11 @@ module.exports = {
 
     // API FETCH - Find movie by query 
     async fetchOMDBdata(req, res) {
-        const response = await fetch(url + '&t=' + req.params.body.title);
+        console.log(req.params.title)
+        console.log("body below")
+        console.log(req.body)
+        const response = await fetch(url + '&t=' + req.body.title);
         const result = await response.json();
-        console.log(result);
         res.json(result)
 
     },

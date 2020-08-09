@@ -1,6 +1,10 @@
 const db = require('../db');
 const { ObjectId } = require('mongodb');
 
+// const { default: fetch } = require('node-fetch');
+const fetch = require('node-fetch');
+const accessKey = process.env.TMDB_ACCESS_KEY;
+const url = 'https://api.themoviedb.org/3/movie/popular?' + 'api_key=' + accessKey + '&language=en-US&page=1'
 
 module.exports = {
     // Add movie to dateflix database
@@ -13,32 +17,49 @@ module.exports = {
             throw new Error(`Due to ${err.message}, you are not allowed to insert this item ${JSON.stringify}`)
         }
     },
-    
-    // View all movies as posters
-    getAll() {
-        // get id and poster
-        return db.movies.find().toArray();
+
+    // // View all movies from dateflix database as posters 
+    // async getAll() {
+    //     // all movie data
+    //     const allMovieData = await db.movies.find().toArray();
+
+    //     // // * TO REMOVE * RETURN ALL MOVIE DATA
+    //     // // return allMovieData;
+    //     console.log(allMovieData[0].Poster);
+    //     console.log(allMovieData[0]._id);
+    //     console.log(allMovieData[0].Title);
+
+    //     // // Get Title, _id and Poster key-value pairs
+    //     let movieList = [];
+    //     for (let i = 0; i < allMovieData.length; i++) { // sequence matters 
+    //         let movieData = {
+    //             "_id": allMovieData[i]._id,
+    //             "Poster": allMovieData[i].Poster,
+    //             "Title": allMovieData[i].Title,
+    //         };
+    //         console.log(movieData);
+    //         movieList.push(movieData);
+    //     }
+    //     console.log(movieList);
+    //     return movieList;
+
+    // },
+
+    // View all popular movies from TMDB
+    async getAllTMDB(req, res) {
+        const response = await fetch(url);
+        const result = await response.json().results;
+        res.json(result);
+
     },
 
-    // View details of selected movie
+    // View info of selected movie
     async getOneById(id) {
         const result = await db.movies.findOne(
             {
                 "_id": ObjectId(id)
             }
         );
-        return result;
-    },
-
-    // Find movie by title * NOT WORKING. 9 Aug - TO BE FETCHED FROM FRONT END*
-    async findOneByTitle(title) {
-        const result = await db.movies.findOne(
-            {
-                title: "title"
-            }
-        );
-        if (!result)
-            throw new Error(`No movies found with title: ${title}`);
         return result;
     },
 
