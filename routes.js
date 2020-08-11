@@ -43,12 +43,18 @@ module.exports = app => {
 
     // MOVIES
     // Fetch list of popular movies from TMDB - FRONT END: view all movies as posters
-    app.get('/movies', movieController.getAllTMDB);
+    app.get('/movies', movieController.getAllTMDB); // rename to /api/tmdbmovies
 
+
+    // View all movies
+    // app.get('/favmovies', movieController.viewAll);
     // View information of selected movie
-    app.get('/movies/:id', movieController.viewOneSelected);
+    app.get('/favmovies/:id', movieController.viewOneSelected);
+    // Delete 
+    // app.delete('/favmovies/:id', movieController.viewOneSelected);
     
     // Find movie by title * NOT WORKING *
     app.post('/movies/search', movieController.viewOneByTitle);
-    
+
+    // /movie/favourites/:id - get favourite movies 
 }
