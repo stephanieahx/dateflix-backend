@@ -50,8 +50,8 @@ module.exports = app => {
     // app.get('/favmovies', movieController.viewAll);
     // View information of selected movie
     app.get('/favmovies/:id', movieController.viewOneSelected);
-    // Delete 
-    // app.delete('/favmovies/:id', movieController.viewOneSelected);
+    // Delete movie from favourites
+    app.delete('/favmovies/:id', movieController.delete);
     
     // Find movie by title * NOT WORKING *
     app.post('/movies/search', movieController.viewOneByTitle);

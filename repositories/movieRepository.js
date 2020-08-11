@@ -63,5 +63,14 @@ module.exports = {
         return result;
     },
 
+    // Delete movie from Dateflix database
+    delete(id) {
+        return db.movies.deleteOne(
+            {
+                "_id": ObjectId(id)
+            }
+        );
+    },
+
 
 }
