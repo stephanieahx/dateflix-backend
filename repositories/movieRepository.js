@@ -53,6 +53,11 @@ module.exports = {
 
     },
 
+    // View all favourite movies in Dateflix database
+    getAll() {
+        return db.movies.find().toArray();
+    },
+    
     // View info of selected movie
     async getOneById(id) {
         const result = await db.movies.findOne(

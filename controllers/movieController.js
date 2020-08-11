@@ -26,6 +26,12 @@ module.exports = {
         res.json(movieListTMDB);
     },
 
+    // View all favourite movies
+    async viewAll(req, res) {
+        const favMovies = await movieRepository.getAll();
+        res.json(favMovies)
+    },
+
     // View information of selected movie
     async viewOneSelected(req, res) {
         const movie = await movieRepository.getOneById(req.params.id);

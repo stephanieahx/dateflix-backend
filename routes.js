@@ -47,9 +47,11 @@ module.exports = app => {
 
 
     // View all movies
-    // app.get('/favmovies', movieController.viewAll);
+    app.get('/favmovies', movieController.viewAll);
+
     // View information of selected movie
     app.get('/favmovies/:id', movieController.viewOneSelected);
+    
     // Delete movie from favourites
     app.delete('/favmovies/:id', movieController.delete);
     
