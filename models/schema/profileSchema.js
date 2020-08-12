@@ -1,6 +1,6 @@
 module.exports = {
     type: 'object',
-    required: ['age', 'gender'],
+    // required: ['age', 'gender'],
     properties: {
         gender: {
             type: 'string'

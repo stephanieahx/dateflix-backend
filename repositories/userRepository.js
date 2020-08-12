@@ -16,6 +16,16 @@ module.exports = {
         }
     },
 
+    // View one user
+    async getOne(id) {
+        const result = await db.users.findOne(
+            {
+                "_id": ObjectId(id)
+            }
+        );
+        return result;
+    },
+
     // find user with matching username for sessions login
     async find(username) {
         const result = await db.users.findOne(

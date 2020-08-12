@@ -24,6 +24,12 @@ module.exports = {
         res.json(users)
     },
 
+    // View information of selected movie
+    async getOne(req, res) {
+        const user = await userRepository.getOneById(req.params.id);
+        res.json(user);
+    },
+
     // Update user profile bio details *UPDATEDAT FIELD NOT WORKING* 
     async update(req, res) {
         try {

@@ -30,6 +30,9 @@ module.exports = app => {
 
     // View all users
     app.get('/users', userController.getAll);
+
+    // View all one user
+    app.get('/users', userController.getOne);
     
     // Update user profile - bio details
     app.put('/users/:id', userController.update);
