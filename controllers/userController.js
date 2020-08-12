@@ -24,9 +24,16 @@ module.exports = {
         res.json(users)
     },
 
+    // View one user
+    async getOne(req, res) {
+        const user = await userRepository.getOneById(req.params.id);
+        res.json(user);
+    },
+
+
     // View information of selected movie
     async getOne(req, res) {
-        const user = await userRepository.getOne(req.params.id);
+        const movie = await movieRepository.getOneById(req.params.id);
         res.json(user);
     },
 
