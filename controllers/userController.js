@@ -26,7 +26,7 @@ module.exports = {
 
     // View information of selected movie
     async getOne(req, res) {
-        const user = await userRepository.getOneById(req.params.id);
+        const user = await userRepository.getOne(req.params.id);
         res.json(user);
     },
 
