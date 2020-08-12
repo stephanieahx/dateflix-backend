@@ -32,7 +32,7 @@ module.exports = app => {
     app.get('/users', userController.getAll);
 
     // View all one user
-    app.get('/users', userController.getOne);
+    app.get('/users', userController.findOne);
     
     // Update user profile - bio details
     app.put('/users/:id', userController.update);

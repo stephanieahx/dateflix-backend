@@ -25,8 +25,8 @@ module.exports = {
     },
 
     // View one user
-    async getOne(req, res) {
-        const user = await userRepository.getOne(req.params.id);
+    async findOne(req, res) {
+        const user = await userRepository.findOne(req.params.id);
         res.json(user);
     },
 
