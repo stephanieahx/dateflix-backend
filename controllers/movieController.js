@@ -38,6 +38,21 @@ module.exports = {
         res.json(movie);
     },
 
+    // Update description of selected movie
+    async updateOneSelected(req, res) {
+        try {
+            const result = await movieRepository.update(req.params.id, req.body);
+            console.log(result)
+            res.json({
+                result
+            });
+
+        } catch (err) {
+            res.json({ err });
+        }
+    },
+
+
     // Delete movie from Dateflix database
     async delete(req, res) {
         try {

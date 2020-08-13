@@ -41,6 +41,18 @@ module.exports = {
         return result;
     },
 
+    // Update description of selected movie
+    update(id, body) {
+        return db.movies.updateOne(
+            {
+                "_id": ObjectId(id)
+            },
+            {
+                $set: body
+            }
+        );
+    },
+
     // Delete movie from Dateflix database
     delete(id) {
         return db.movies.deleteOne(

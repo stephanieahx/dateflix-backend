@@ -33,13 +33,13 @@ module.exports = app => {
 
     // View all one user
     app.get('/users', userController.findOne);
-    
+
     // Update user profile - bio details
     app.put('/users/:id', userController.update);
-    
+
     // Add movie to favourites 
     app.put('/users/movies/:id', userController.addFavMovie);
-    
+
     // Delete user profile
     app.delete('/users/:id', userController.delete);
 
@@ -48,16 +48,19 @@ module.exports = app => {
     // Fetch list of popular movies from TMDB 
     app.get('/movies', movieController.getAllTMDB);
 
-
+    //FAVMOVIES
     // View all movies
     app.get('/favmovies', movieController.viewAll);
 
     // View information of selected movie
     app.get('/favmovies/:id', movieController.viewOneSelected);
-    
+
+    // Update description of selected movie
+    app.put('/favmovies/:id', movieController.updateOneSelected)
+
     // Delete movie from favourites
     app.delete('/favmovies/:id', movieController.delete);
-    
+
     // Find movie by title * NOT WORKING *
     app.post('/movies/search', movieController.viewOneByTitle);
 
