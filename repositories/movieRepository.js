@@ -66,7 +66,7 @@ module.exports = {
     delete(id) {
         return db.movies.remove(
             {
-                "title": id,
+                "title": "id",
             },
             {
                 justOne: true,
