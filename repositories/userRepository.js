@@ -55,7 +55,7 @@ module.exports = {
     },
 
     
-    // Add movie to favourites * TO ASK WILFRED *
+    // Add movie to favourites 
     addFavMovie(id, movie) {
         return db.users.updateOne(
             {
