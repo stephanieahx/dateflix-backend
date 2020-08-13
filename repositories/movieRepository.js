@@ -55,23 +55,23 @@ module.exports = {
 
     // Delete movie from Dateflix database
     // // TROUBLESHOOTING - DELETE ONE BY ID
-    // delete(id) {
-    //     return db.movies.deleteOne(
-    //         {
-    //             "_id": ObjectId(id)
-    //         }
-    //     );
-    // },
-    // TROUBLESHOOTING - DELETE ONE BY TITLE - param is still called 'id' instead of 'title'
     delete(id) {
-        return db.movies.remove(
+        return db.movies.deleteOne(
             {
-                "title": "id",
-            },
-            {
-                justOne: true,
+                "_id": ObjectId(id)
             }
         );
     },
+    // TROUBLESHOOTING - DELETE ONE BY TITLE - param is still called 'id' instead of 'title'
+    // delete(id) {
+    //     return db.movies.remove(
+    //         {
+    //             "title": "id",
+    //         },
+    //         {
+    //             justOne: true,
+    //         }
+    //     );
+    // },
     
 }
