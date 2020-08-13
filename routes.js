@@ -48,6 +48,9 @@ module.exports = app => {
     // Fetch list of popular movies from TMDB 
     app.get('/movies', movieController.getAllTMDB);
 
+    // Find movie by title * NOT WORKING *
+    app.post('/movies/search', movieController.viewOneByTitle);
+
     //FAVMOVIES
     // View all movies
     app.get('/favmovies', movieController.viewAll);
@@ -60,9 +63,5 @@ module.exports = app => {
 
     // Delete movie from favourites
     app.delete('/favmovies/:id', movieController.delete);
-
-    // Find movie by title * NOT WORKING *
-    app.post('/movies/search', movieController.viewOneByTitle);
-
-    // /movie/favourites/:id - get favourite movies 
+    
 }

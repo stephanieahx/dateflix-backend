@@ -30,7 +30,7 @@ module.exports = {
     getAll() {
         return db.movies.find().toArray();
     },
-    
+
     // View info of selected movie
     async getOneById(id) {
         const result = await db.movies.findOne(
@@ -54,13 +54,24 @@ module.exports = {
     },
 
     // Delete movie from Dateflix database
+    // // TROUBLESHOOTING - DELETE ONE BY ID
+    // delete(id) {
+    //     return db.movies.deleteOne(
+    //         {
+    //             "_id": ObjectId(id)
+    //         }
+    //     );
+    // },
+    // TROUBLESHOOTING - DELETE ONE BY TITLE - param is still called 'id' instead of 'title'
     delete(id) {
-        return db.movies.deleteOne(
+        return db.movies.remove(
             {
-                "_id": ObjectId(id)
+                "title": id,
+            },
+            {
+                justOne: true,
             }
         );
     },
-
-
+    
 }
