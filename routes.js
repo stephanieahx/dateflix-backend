@@ -45,8 +45,8 @@ module.exports = app => {
 
 
     // MOVIES
-    // Fetch list of popular movies from TMDB - FRONT END: view all movies as posters
-    app.get('/movies', movieController.getAllTMDB); // rename to /api/tmdbmovies
+    // Fetch list of popular movies from TMDB 
+    app.get('/movies', movieController.getAllTMDB);
 
 
     // View all movies

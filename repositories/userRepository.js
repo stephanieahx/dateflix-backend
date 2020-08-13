@@ -42,7 +42,7 @@ module.exports = {
         return db.users.find().toArray();
     },
 
-    // Update user profile bio details *UPDATEDAT FIELD NOT WORKING* 
+    // Update user profile bio details
     update(id, body) {
         return db.users.updateOne(
             {

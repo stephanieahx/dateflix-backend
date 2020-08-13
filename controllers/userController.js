@@ -1,10 +1,7 @@
 const userRepository = require('../repositories/userRepository');
 const { validateUser } = require('../models/userValidator');
 const { validateProfile } = require('../models/profileValidator');
-const sessionController = require('./sessionController'); // don't know if this is required
-const { find } = require('../repositories/userRepository'); // don't know if this is required / don't know what it is for
 const movieRepository = require('../repositories/movieRepository');
-// const movieController = require('../controllers/movieController');
 
 module.exports = {
     // Register a new user
